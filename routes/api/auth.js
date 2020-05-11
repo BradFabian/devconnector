@@ -47,6 +47,14 @@ router.post(
 
       // match user and password
 
+      const isMatch = await bcrypt.compare(password, user.password);
+
+      if (!isMatch) {
+        return res
+          .status(400)
+          .json({ errors: [{ msg: "Invalid Credentials" }] });
+      }
+
       // Return Jsontoken
 
       const payload = {
