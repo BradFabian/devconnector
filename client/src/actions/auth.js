@@ -8,16 +8,10 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT
-  
 } from './types';
-
-import setAuthToken from '../utils/setAuthToken';
 
 // Load User
 export const loadUser = () => async dispatch => {
-  if(localStorage.token){
-    setAuthToken(localStorage.token);
-  }
   try {
     const res = await api.get('/auth');
 
@@ -81,5 +75,5 @@ export const login = (email, password) => async dispatch => {
   }
 };
 
-// Logout / clear profile
+// Logout
 export const logout = () => ({ type: LOGOUT });
